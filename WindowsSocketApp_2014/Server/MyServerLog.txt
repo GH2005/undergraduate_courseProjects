@@ -1,0 +1,46 @@
+        WSAStartup() returns:      0;  WSAGetLastError():      0;  GetLastError():      0.
+              bind() returns:      0;  WSAGetLastError():      0;  GetLastError():      0.
+            listen() returns:      0;  WSAGetLastError():      0;  GetLastError():      0.
+    hAcceptingThread returns:    192;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    200;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    204;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    204;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    208;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    212;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    200;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    204;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    216;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    216;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    208;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    200;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    212;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    228;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    232;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    236;  WSAGetLastError():      0;  GetLastError():      0.
+       hClientThread returns:    240;  WSAGetLastError():      0;  GetLastError():      0.
+     Division recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping recv() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+         Ping send() returns:      1;  WSAGetLastError():      0;  GetLastError():      0.
+            accept() returns:    220;  WSAGetLastError():      0;  GetLastError():      0.
+ 

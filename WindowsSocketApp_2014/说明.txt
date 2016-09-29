@@ -1,0 +1,64 @@
+计算机网络编程实践
+使用 Socket API 实现 C/S 架构和 P2P 架构应用
+1. 编写和运行环境
+这是一套构建于 Microsoft Visual Studio 2013 开发环境的解决方案. 解决方案内包含三个项目: Server, Client 和 Peer. 由于我具有一年半的 Windows SDK C++ 学习经历, 所以决定在 Windows 下使用 C++, 调用 Windows Socket 2.2 来完成这项实践. 为了编译运行解决方案内的 exe 项目, 需要 Microsoft Visual Studio 支持, 若版本不足 2013, 则需要更改项目属性内的 “平台工具集” 选项, 或自建项目, 复制代码, 添加 ws2_32.lib 引用.
+2. 项目文件说明
+	1. CommonFile:
+	实现了两个类: CMyServer 和 CMyClient. 前者的功能是监听端口, 接受客户端连接和处理客户端请求; 后者则负责发送连接请求和服务请求.
+	2. Client:
+	包含 MyClient.h 和 MyClient.cpp, 为客户端可执行程序.
+	3. Server:
+	包含 MyServer.h 和 MyServer.cpp, 为服务器可执行程序.
+	4. Peer:
+	包含 CommonFiles 中的所有文件, 为 P2P 架构中的 Peer 可执行程序.
+3. 功能说明
+	C/S 架构下, 我实现了 Client 向 Server 发送 Ping 请求和文件下载请求的功能;
+	P2P 架构下, 虽说没要求, 但是我由着兴致编写了一个 Peer 之间聊天的功能.
+4. 部分代码解释
+	1. 调试信息作为文件输出
+	为了调试方便, 这两个类内皆有void OutFileStream(const char *, int); 函数, 用于输出各种函数的返回值和 DWORD WSAGetLastError(); 的返回值, CMyServer 类实例输出的是 MyServerLog.txt, CMyClient 类输出的是 MyClientLog.txt.
+	2. 线程创建宏定义
+	// This macro function calls the C runtime's _beginthreadex function. 
+	// The C runtime library doesn't want to have any reliance on Windows' data 
+	// types such as HANDLE. This means that a Windows programmer needs to cast
+	// values when using _beginthreadex. Since this is terribly inconvenient, 
+	// I created this macro to perform the casting.
+	
+	typedef unsigned(__stdcall *PTHREAD_START) (void *);
+	
+	#define chBEGINTHREADEX(psa, cbStackSize, pfnStartAddr, \
+		pvParam, dwCreateFlags, pdwThreadI5d)                 \
+		((HANDLE)_beginthreadex(                          \
+		(void *)        (psa),                         \
+		(unsigned)      (cbStackSize),                 \
+		(PTHREAD_START) (pfnStartAddr),                \
+		(void *)        (pvParam),                     \
+		(unsigned)      (dwCreateFlags),               \
+		(unsigned *)    (pdwThreadId)))
+
+这是来自 <Windows 核心编程> 一书中作者提供的我最喜欢的宏定义之一, 用于包装 C/C++ 运行库所提供的线程创建函数. 
+	3. 服务端实现方式简述
+初始化 Winsock 后, 服务端创建新的线程专门用于 listen() 客户端的 connect() 请求, 并为每个 accept() 成功的 socket 创建新的线程以专门服务于这个 client. 所以服务端可以同时受理多个 Client 的请求. 我规定由客户端向服务端发送单个字符来确定要使用的功能: ‘0’ -> Ping 请求, ‘1’ -> 传文件请求, ‘2’ 聊天请求.
+	4. 客户端实现方式简述
+	初始化 Winsock 后, 客户端向服务端发送字符 ‘0’’1’’2’ 来请求不同的服务.
+	5. Peer 实现方式简述
+	为了让这个程序看起来像个平等的 Peer, 每个 Peer 启动后都可以接收其他 Peer 的连接请求, 这需要创建一个线程. 聊天建立之后, 对于每个 Peer, 都需要一个线程轮询用户的聊天输入, 以及另外一个线程轮询聊天对方发送来的消息. 一旦聊天关系建立, 双方都禁止其他 Peer 连入, 聊天结束后自动解禁.
+5. 程序使用指南
+	先要说明的问题: 我是搞不清楚我们这个校园网的结构, 始终找不到我在 Internet 上真正的可作为服务器的 IP 地址(或许根本没有), 所以无法实现通过 Internet 的测试. 不过, 本机测试使用 127.0.0.1, 以及局域网内测试使用以太网卡的 IP 地址皆可通过.
+	1. C/S 架构程序的使用
+运行 Server 之前, 要保证 C:\ServerDir 存在, 里面存放可以提供给 Client 的各种文件.
+运行项目 Server, 按照提示输入服务器所在的本机的 IP 地址(Winsock 的要求)和要使用的端口号. 服务器已经启动, 可以接收客户端的连接. 若想退出服务器, 任意输入即可.
+	
+	运行 Client 之前, 要保证 C:\ClientDir 存在, 里面不必存有文件.
+	运行项目 Client, 输入 Server 所在的 IP 地址和 Server 监听的端口号;
+	按照提示, 输入 0 即可退出, 输入 2 即可测试到 Server 的 Ping;
+	若输入 3, 则会获得服务器 C:\ServerDir 下所有文件的文件名; 正确输入其中一个文件的文件名之后, C:\ClientDir 下则会获得该文件.
+	自然, 可以多个 Client 向同一个 Server 请求.
+	2. P2P 架构程序的使用
+	同时启动两个 Peer 进程, 分别输入本机 IP 地址和端口号, 这两个要输入的项不可都相同, 本机测试的话可以使用 127.0.0.1 8001 和 127.0.0.1 8002.
+	接下来, 想要发起聊天的 Peer 要输入 1, 另一个则要等待连接, 输入 2.
+	发起聊天的 Peer 接下来要输入等待连接的 Peer 所开放的 IP 地址和端口号.
+	聊天建立, 任一方输入的聊天消息将立刻出现在对方的控制台界面上.
+	想要终止聊天, 任一方可以输入 _ENDTHETALK, 此时这一方立即退出聊天, 另一方在输入任意字符串后退出聊天(毕竟有个线程在 std::cin 那挂起着).
+	退出聊天后, 双方都可以继续选择输入 1 或者 2.
+
