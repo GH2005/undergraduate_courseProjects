@@ -1,6 +1,0 @@
-F:\KU\Documents\Docxes_Txts_Pdfs\compilation\CppFuncDef\CppFuncDef\obj\Debug\CppFuncDefLexer.cs
-F:\KU\Documents\Docxes_Txts_Pdfs\compilation\CppFuncDef\CppFuncDef\obj\Debug\CppFuncDefParser.cs
-F:\KU\Documents\Docxes_Txts_Pdfs\compilation\CppFuncDef\CppFuncDef\obj\Debug\CppFuncDefListener.cs
-F:\KU\Documents\Docxes_Txts_Pdfs\compilation\CppFuncDef\CppFuncDef\obj\Debug\CppFuncDefBaseListener.cs
-F:\KU\Documents\Docxes_Txts_Pdfs\compilation\CppFuncDef\CppFuncDef\obj\Debug\CppFuncDefVisitor.cs
-F:\KU\Documents\Docxes_Txts_Pdfs\compilation\CppFuncDef\CppFuncDef\obj\Debug\CppFuncDefBaseVisitor.cs
