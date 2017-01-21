@@ -1,4 +1,4 @@
-﻿"LMWTM" stands for "Little mouse walk the maze";
+﻿"LMWTM" stands for "Little mouse walks the maze";
 it is a game developed by Nan Wang and me on demand of the C++ Practice course in 2013 at Tianjin University;
 Nan Wang was responsible for managing the background data structure using algorithms,
 and I designed the whole program structure and the UI.
