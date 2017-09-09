@@ -194,4 +194,4 @@ Console.Read();																										// 保持控制台窗口开启
 	CALLINGCONV 和 DATATYPE 均完全符合 ID 的语法规则.
 
 5. 语义分析实现未果
-	根据 ANTLR C# Target 教程, 在语法分析中, 一行表达式的后面加上 # Tag 可以使项目相应地自动生成 Visitor 派生类中的 override Visit 函数, 该函数的参数 context 包含了该行表达式上各个符号或表达式的内容. 但是, 我无法加上  # Tag 后使语法文件通过编译, 也没能发现 Visitor 派生类之中的用于 override 的函数. 虽有心完成一点语义分析, 但最终智能放弃.
+	根据 ANTLR C# Target 教程, 在语法分析中, 一行表达式的后面加上 # Tag 可以使项目相应地自动生成 Visitor 派生类中的 override Visit 函数, 该函数的参数 context 包含了该行表达式上各个符号或表达式的内容. 但是, 我无法加上  # Tag 后使语法文件通过编译, 也没能发现 Visitor 派生类之中的用于 override 的函数. 虽有心完成一点语义分析, 但最终只能放弃.
